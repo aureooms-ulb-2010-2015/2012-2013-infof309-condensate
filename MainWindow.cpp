@@ -12,8 +12,10 @@
 #include "Algorithm_TagAnTrack.h"
 #include "Algorithm_BinaryMaskWithOriginalFrame.h"
 #include "Algorithm_Watershed.h"
-#include "Algorithm_Condensation.h"
+#include "Algorithm_OomsChallenge.h"
 #include "Algorithm_CustomCondensationV1.h"
+#include "Algorithm_CustomCondensationTemplateV2.h"
+#include "Matcher_GreyLevelDistanceMatcher.h"
 
 //===================================================
 // Le seul code auquel il faut toucher pour rajouter des algos à pouvoir exécuter, attention à respecter l'ordre!!
@@ -23,7 +25,7 @@ FrameProcessor* MainWindow::generateProcessor(int index){
     case 0:
 		return new NoProcessing();
     case 1:
-		return new Tagging();
+		return new Tagging(0,0.01,cv::Size(1,1));
 	case 2:
 		return new FeatureTracker();
 	case 3:
@@ -31,11 +33,13 @@ FrameProcessor* MainWindow::generateProcessor(int index){
 	case 4:
 		return new Watershed();
 	case 5:
-		return new Condensation();
+		return new OomsChallenge();
 	case 6:
-		return new BinaryMaskWithOriginalFrame();
+		return new BinaryMaskWithOriginalFrame(cv::Size(1,1));
 	case 7:
 		return new CustomCondensationV1();
+	case 8:
+		return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
         //...
 
     }
@@ -53,6 +57,7 @@ void MainWindow::initProcessingChoices(){
 	this->_processingChoice->addItem("Condensation");
 	this->_processingChoice->addItem("Binary Mask");
 	this->_processingChoice->addItem("CustomCondensationV1");
+	this->_processingChoice->addItem("CustomCondensationTemplateV2 (GreyLevelDistanceMatcher)");
     //...
 }
 
