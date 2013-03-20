@@ -77,7 +77,7 @@ void MainWindow::centerWindow(){
 MainWindow::MainWindow(QWidget *parent) :
 	QWidget(parent),_frameProcessorId(0){
 
-    this->setWindowTitle("FishTube");
+	this->setWindowTitle("ConDensAte");
 
 	this->_wraper = new QWidget(this);
 	this->_wraper->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);

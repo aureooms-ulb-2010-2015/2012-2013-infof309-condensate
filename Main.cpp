@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
 
     QApplication a(argc, argv);
 	a.setOrganizationName("ULB");
-    a.setApplicationName("FishTube");
+	a.setApplicationName("ConDensAte");
 	MainWindow w;
     w.show();
     return a.exec();
