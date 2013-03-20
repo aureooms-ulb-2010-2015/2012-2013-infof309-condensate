@@ -154,16 +154,24 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
 			return this->requestExitFullScreenSLOT();
 		}
 	}
-	//DOESNT WORK, DUNNO Y
-	else if((event->key() == Qt::Key_F4 && QApplication::keyboardModifiers() == Qt::AltModifier)
-			|| (event->key() == Qt::Key_W && QApplication::keyboardModifiers() == Qt::ControlModifier)){
+	else if(event->key() == Qt::Key_F4 && QApplication::keyboardModifiers() == Qt::AltModifier){
 		return QCoreApplication::quit();
+	}
+
+	else if(event->key() == Qt::Key_F5){
+		return reloadStream();
+	}
+
+	else if(event->key() == Qt::Key_F1){
+		return this->playPauseToggle();
 	}
 
 	return QWidget::keyPressEvent(event);
 }
 
 void MainWindow::requestChangeSourceSLOT(int device){
+	lastDevice = device;
+	whichLast = 0;
 	this->_displayer->pause();
 	this->_streamProcessor->stop();
 	this->_streamReader->open(device);
@@ -171,6 +179,8 @@ void MainWindow::requestChangeSourceSLOT(int device){
 }
 
 void MainWindow::requestChangeSourceSLOT(QString filename){
+	lastPath = filename;
+	whichLast = 1;
 	this->_displayer->pause();
 	this->_streamProcessor->stop();
 	this->_streamReader->open(filename);
@@ -200,12 +210,39 @@ void MainWindow::sourceReady(){
 }
 
 
+
+void MainWindow::reloadStream(){
+	if(whichLast == -1) return;
+	if(whichLast == 0){
+		this->requestChangeSourceSLOT(lastDevice);
+	}
+	else{
+		this->requestChangeSourceSLOT(lastPath);
+	}
+}
+
+void MainWindow::playPauseToggle(){
+	bool wasPlaying = this->_videoControls->isPlaying();
+	if(wasPlaying){
+		this->_displayer->pause();
+		this->_videoControls->setPaused();
+	}
+	else{
+		this->_displayer->play();
+		this->_videoControls->setPlaying();
+	}
+}
+
+
 void MainWindow::posChangedSLOT(int pos){
 	int elapsedTime = 0;
 	if(this->_streamInfo.getFps() > 0 && this->_streamInfo.getNumberOfFrames() > 0 && pos >= 0){
 		elapsedTime = pos/this->_streamInfo.getFps();
 	}
 	this->_videoControls->setElapsedTime(elapsedTime);
+	if(pos == this->_streamInfo.getNumberOfFrames() - 1){
+		reloadStream();
+	}
 }
 
 void MainWindow::timeChangedSLOT(int time){
