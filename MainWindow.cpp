@@ -24,11 +24,11 @@ FrameProcessor* MainWindow::generateProcessor(){
 	case 2:
 		return new Tagging(0,0.01,cv::Size(1,1));
 	case 3:
-		return new Watershed();
+		return new Watershed(0, cv::Size(1,1));
 	case 4:
 		return new FeatureTracker();
 	case 5:
-		return new TagNTrack();
+		return new TagNTrack(cv::Size(1,1));
 	case 6:
 		return new OomsChallenge();
 //	case 7:
@@ -50,7 +50,7 @@ void MainWindow::initProcessingChoices(){
 	this->_processingChoice->addItem("Watershed");
     this->_processingChoice->addItem("FeatureTracker");
 	this->_processingChoice->addItem("TagNTrack");
-	this->_processingChoice->addItem("Condensation");
+	this->_processingChoice->addItem("ConDensAtion");
 	//this->_processingChoice->addItem("CustomCondensationV1");
 	//this->_processingChoice->addItem("CustomCondensationTemplateV2 (GreyLevelDistanceMatcher)");
     //...
