@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 
+#include <QApplication>
 #include "Algorithm_NoProcessing.h"
 #include "Algorithm_Tagging.h"
 #include "Algorithm_FeaturesTracker.h"
@@ -18,22 +19,22 @@ FrameProcessor* MainWindow::generateProcessor(){
 	switch(this->_frameProcessorId){
     case 0:
 		return new NoProcessing();
-    case 1:
-		return new Tagging(0,0.01,cv::Size(1,1));
-	case 2:
-		return new FeatureTracker();
-	case 3:
-		return new TagNTrack();
-	case 4:
-		return new Watershed();
-	case 5:
-		return new OomsChallenge();
-	case 6:
+	case 1:
 		return new BinaryMaskWithOriginalFrame(cv::Size(1,1));
-	case 7:
-		return new CustomCondensationV1();
-	case 8:
-		return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
+	case 2:
+		return new Tagging(0,0.01,cv::Size(1,1));
+	case 3:
+		return new Watershed();
+	case 4:
+		return new FeatureTracker();
+	case 5:
+		return new TagNTrack();
+	case 6:
+		return new OomsChallenge();
+//	case 7:
+//		return new CustomCondensationV1();
+//	case 8:
+//		return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
         //...
 
     }
@@ -44,14 +45,14 @@ FrameProcessor* MainWindow::generateProcessor(){
 
 void MainWindow::initProcessingChoices(){
     this->_processingChoice->addItem("Pas de traitement");
+	this->_processingChoice->addItem("Binary Mask");
 	this->_processingChoice->addItem("Tagging");
+	this->_processingChoice->addItem("Watershed");
     this->_processingChoice->addItem("FeatureTracker");
 	this->_processingChoice->addItem("TagNTrack");
-	this->_processingChoice->addItem("Watershed");
 	this->_processingChoice->addItem("Condensation");
-	this->_processingChoice->addItem("Binary Mask");
-	this->_processingChoice->addItem("CustomCondensationV1");
-	this->_processingChoice->addItem("CustomCondensationTemplateV2 (GreyLevelDistanceMatcher)");
+	//this->_processingChoice->addItem("CustomCondensationV1");
+	//this->_processingChoice->addItem("CustomCondensationTemplateV2 (GreyLevelDistanceMatcher)");
     //...
 }
 
@@ -74,7 +75,11 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 MainWindow::~MainWindow(){}
 
 void MainWindow::keyPressEvent(QKeyEvent* event){
-	//TODO ADD SHORTCUTS TO PROCESS
+	for(int i = 0; i < this->_processingChoice->count(); ++i){
+		if( (QApplication::keyboardModifiers() & ~Qt::ShiftModifier ) == Qt::ControlModifier && event->key() == (Qt::Key_0 + i)){
+			return this->_processingChoice->setCurrentIndex(i);
+		}
+	}
 	return BasicWindow::keyPressEvent(event);
 }
 
