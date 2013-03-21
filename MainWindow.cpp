@@ -31,11 +31,11 @@ FrameProcessor* MainWindow::generateProcessor(){
 		return new TagNTrack(cv::Size(1,1));
 	case 6:
 		return new OomsChallenge();
-//	case 7:
-//		return new CustomCondensationV1();
-//	case 8:
-//		return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
-        //...
+	case 7:
+		return new CustomCondensationV1();
+	case 8:
+		return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
+		//...
 
     }
 
@@ -51,8 +51,8 @@ void MainWindow::initProcessingChoices(){
     this->_processingChoice->addItem("FeatureTracker");
 	this->_processingChoice->addItem("TagNTrack");
 	this->_processingChoice->addItem("ConDensAtion");
-	//this->_processingChoice->addItem("CustomCondensationV1");
-	//this->_processingChoice->addItem("CustomCondensationTemplateV2 (GreyLevelDistanceMatcher)");
+	this->_processingChoice->addItem("CustomCondensationV1");
+	this->_processingChoice->addItem("CustomCondensationTemplateV2 (GreyLevelDistanceMatcher)");
     //...
 }
 
