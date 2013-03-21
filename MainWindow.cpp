@@ -60,7 +60,7 @@ void MainWindow::initProcessingChoices(){
 //Ne pas toucher plus bas si c'est pour rajouter un algo.
 
 MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
-	this->setWindowTitle("FishTube");
+	this->setWindowTitle("ConDensAte");
 
 	this->initProcessingChoices();
 
