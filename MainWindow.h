@@ -8,7 +8,7 @@ class MainWindow : public BasicWindow{
     Q_OBJECT
 
 private:
-	CustomButton* _parameterToggle = new CustomButton("Edit parameters");
+	CustomButton* _parameterToggle = new CustomButton();
 
 	void initProcessingChoices();
 	virtual FrameProcessor* generateProcessor();

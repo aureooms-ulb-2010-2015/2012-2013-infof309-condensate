@@ -21,10 +21,11 @@ FrameProcessor* MainWindow::generateProcessor(){
 MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 	this->setWindowTitle("ConDensAte");
 
-	QHBoxLayout* upperBarLayout = new QHBoxLayout(this->_upperBar);
-	upperBarLayout->addWidget(this->_inputChoice);
-	upperBarLayout->addWidget(this->_parameterToggle);
+	QGridLayout* upperBarLayout = new QGridLayout(this->_upperBar);
+	upperBarLayout->addWidget(this->_inputChoice, 0, 0, 1, 3);
+	upperBarLayout->addWidget(this->_parameterToggle, 0, 3, 1, 1);
 	this->_parameterToggle->setFixedHeight(23);
+	this->_parameterToggle->setIcon(QIcon(":parameter_icon"));
 	upperBarLayout->setContentsMargins(0,0,0,0);
 }
 
