@@ -26,11 +26,13 @@ static:unix:TARGETDEPS += ../liblib309.a
 
 SOURCES += \
     Main.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    CondensateParameterControlWidget.cpp
 
 
 HEADERS += \
-    MainWindow.h
+    MainWindow.h \
+    CondensateParameterControlWidget.h
 
 RESOURCES += img.qrc
 

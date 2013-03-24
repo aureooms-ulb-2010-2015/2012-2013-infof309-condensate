@@ -27,6 +27,17 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 	this->_parameterToggle->setFixedHeight(23);
 	this->_parameterToggle->setIcon(QIcon(":parameter_icon"));
 	upperBarLayout->setContentsMargins(0,0,0,0);
+
+	QObject::connect(this->_parameterToggle, SIGNAL(clicked()), this, SLOT(toggleParameterControlWidget()));
 }
 
 MainWindow::~MainWindow(){}
+
+void MainWindow::toggleParameterControlWidget(){
+	if(this->_parameterControlWidget->isVisible()){
+		this->_parameterControlWidget->hide();
+	}
+	else{
+		this->_parameterControlWidget->show();
+	}
+}
