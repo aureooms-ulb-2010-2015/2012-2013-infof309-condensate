@@ -9,13 +9,13 @@
 #include "Algorithm_Watershed.h"
 #include "Algorithm_OomsChallenge.h"
 #include "Algorithm_CustomCondensationV1.h"
-#include "Algorithm_CustomCondensationTemplateV2.h"
+#include "Algorithm_CustomCondensationTemplateV3.h"
 #include "Matcher_GreyLevelDistanceMatcher.h"
 
 //===================================================
 
 FrameProcessor* MainWindow::generateProcessor(){
-	return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
+	return new CustomCondensationTemplateV3();
 }
 
 MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
