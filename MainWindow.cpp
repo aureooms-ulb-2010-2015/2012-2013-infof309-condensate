@@ -34,7 +34,7 @@ FrameProcessor* MainWindow::generateProcessor(){
 	case 7:
 		return new CustomCondensationV1();
 	case 8:
-		return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
+        return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<3> >();
 		//...
 
     }
