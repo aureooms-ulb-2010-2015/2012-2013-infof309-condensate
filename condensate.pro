@@ -27,12 +27,22 @@ static:unix:TARGETDEPS += ../liblib309.a
 SOURCES += \
     Main.cpp \
     MainWindow.cpp \
-    CondensateParameterControlWidget.cpp
+    CondensateParameterControlWidget.cpp \
+    PrecisionTab.cpp \
+    DensityTab.cpp \
+    SegmentationTab.cpp \
+    MatcherTab.cpp \
+    FeatureGeneratorTab.cpp
 
 
 HEADERS += \
     MainWindow.h \
-    CondensateParameterControlWidget.h
+    CondensateParameterControlWidget.h \
+    PrecisionTab.h \
+    DensityTab.h \
+    SegmentationTab.h \
+    MatcherTab.h \
+    FeatureGeneratorTab.h
 
 RESOURCES += img.qrc
 
