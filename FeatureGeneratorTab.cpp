@@ -13,9 +13,9 @@ FeatureGeneratorTab::FeatureGeneratorTab(QWidget *parent) :
 
 void FeatureGeneratorTab::loadParameters(const CondensationParameters &parameters){
 	this->_maxCorners->setValue(parameters.maxCorners);
-	this->_qualityLevel->setValue(parameters.qualityLevel);
+	this->_qualityLevel->setValue(parameters.qualityLevel*100);
 	this->_minDistance->setValue(parameters.minDistance);
 	this->_blockSize->setValue(parameters.blockSize);
-	this->_k->setValue(parameters.k);
+	this->_k->setValue(parameters.k*100);
 	this->_useHarrisDetector->setToggled(parameters.useHarrisDetector);
 }
