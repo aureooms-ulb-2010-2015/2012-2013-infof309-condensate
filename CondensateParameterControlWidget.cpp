@@ -3,9 +3,10 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
     this->_tabs->addTab(this->_densityTab, "Density");
     this->_tabs->addTab(this->_featureGeneratorTab, "Feature Generator");
     this->_tabs->addTab(this->_matcherTab, "Matcher");
-    this->_tabs->addTab(this->_precisionTab, "Precision");
-    this->_tabs->addTab(this->_segmentationTab, "Segmentation");
-	this->_tabs->setFixedSize(480,480);
+	this->_tabs->addTab(this->_precisionTab, "Precision");
+	this->_tabs->addTab(this->_segmentationTab, "Segmentation");
+	this->_tabs->addTab(this->_inputOutputTab, "XML");
+	this->_tabs->setFixedSize(560,480);
 	this->setWindowTitle("Parameters Controls");
 }
 
