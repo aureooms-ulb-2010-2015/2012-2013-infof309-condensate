@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 
 #include <QApplication>
+#include <QDesktopWidget>
 
 //===================================================
 
@@ -31,9 +32,31 @@ SynchronizedCondensation<CustomCondensationTemplateV3> *MainWindow::getSynchroni
 
 void MainWindow::toggleParameterControlWidget(){
         if(this->_parameterControlWidget->isVisible()){
-                this->_parameterControlWidget->hide();
+			this->_parameterControlWidget->hide();
+			if(!this->isFullScreen()){
+				this->centerWindow();
+			}
         }
         else{
-                this->_parameterControlWidget->show();
+			this->_parameterControlWidget->show();
+			if(!this->isFullScreen()){
+				this->splitScreen();
+			}
         }
+}
+
+
+void MainWindow::splitScreen(){
+	this->show();
+	QRect leftRect(this->frameGeometry()), rightRect(this->_parameterControlWidget->frameGeometry());
+	QPoint leftCenter, rightCenter, screenCenter;
+	screenCenter = QApplication::desktop()->availableGeometry().center();
+	leftCenter.setX(screenCenter.x()/2);
+	leftCenter.setY(screenCenter.y());
+	rightCenter.setX(screenCenter.x()*3/2);
+	rightCenter.setY(screenCenter.y());
+	leftRect.moveCenter(leftCenter);
+	rightRect.moveCenter(rightCenter);
+	this->_parameterControlWidget->move(rightRect.topLeft());
+	this->move(leftRect.topLeft());
 }

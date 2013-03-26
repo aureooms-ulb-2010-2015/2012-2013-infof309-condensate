@@ -22,6 +22,7 @@ public:
 	virtual ~MainWindow();
 	SynchronizedCondensation<CustomCondensationTemplateV3>* getSynchronizedAlgorithm();
 
+	void splitScreen();
 public slots:
 	virtual void toggleParameterControlWidget();
 };
