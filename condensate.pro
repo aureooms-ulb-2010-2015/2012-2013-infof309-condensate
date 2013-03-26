@@ -27,12 +27,14 @@ static:unix:TARGETDEPS += ../liblib309.a
 SOURCES += \
     Main.cpp \
     MainWindow.cpp \
-    CondensateParameterControlWidget.cpp
+    CondensateParameterControlWidget.cpp \
+    CustomDial.cpp
 
 
 HEADERS += \
     MainWindow.h \
-    CondensateParameterControlWidget.h
+    CondensateParameterControlWidget.h \
+    CustomDial.h
 
 RESOURCES += img.qrc
 
