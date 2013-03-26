@@ -15,11 +15,7 @@
 //===================================================
 
 FrameProcessor* MainWindow::generateProcessor(){
-<<<<<<< HEAD
-        return new CustomCondensationTemplateV2<GreyLevelDistanceMatcher<6> >();
-=======
-	return new CustomCondensationTemplateV3();
->>>>>>> d2354505d629d67476d61d8c264eb93a498d2d7a
+    return new CustomCondensationTemplateV3();
 }
 
 MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){

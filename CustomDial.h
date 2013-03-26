@@ -24,6 +24,8 @@ signals:
 public slots:
 
     void valueChangedSLOT(int);
+    void changeLowerBoundSLOT(int);
+    void changeUpperBoundSLOT(int);
     
 };
 

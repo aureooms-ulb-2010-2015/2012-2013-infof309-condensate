@@ -24,8 +24,19 @@ void CustomDial::valueChangedSLOT(int newValue){
     emit valueChanged(newValue);
 }
 
+void CustomDial::changeLowerBoundSLOT(int bound)
+{
+    this->input->setMinimum(bound);
+}
+
 void CustomDial::setValueText(int newValue){
     std::ostringstream text;
     text << newValue;
     value->setText(QString(text.str().c_str()));
+}
+
+
+void CustomDial::changeUpperBoundSLOT(int bound)
+{
+    this->input->setMaximum(bound);
 }
