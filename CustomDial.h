@@ -19,7 +19,7 @@ private:
 public:
     explicit CustomDial(const QString &labelText, int minValue, int maxValue, QWidget *parent = 0);
     void setValue(int);
-    void setValueText(int newValue);
+	void setValueText(int newValue);
 signals:
     void valueChanged(int);
     

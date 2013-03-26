@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "CustomDial.h"
+#include "CondensationParameters.h"
 
 class PrecisionTab : public QWidget
 {
@@ -12,6 +13,7 @@ private:
 	CustomDial* _generatingRange = new CustomDial("Genrating range", 0, 1000);
 public:
 	explicit PrecisionTab(QWidget *parent = 0);
+	void loadParameters(const CondensationParameters& parameters);
 	
 signals:
 	

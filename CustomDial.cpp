@@ -7,12 +7,14 @@ CustomDial::CustomDial(const QString& labelText, int minValue, int maxValue, QWi
         layout->addWidget(value, 0, 2, 1, 1);
         layout->addWidget(bounds, 0, 3, 1, 1);
 
-        QObject::connect(input, SIGNAL(valueChanged(int)), this, SLOT(valueChangedSLOT(int)));
 
         input->setMinimum(minValue);
+		this->setValueText(minValue);
         input->setMaximum(maxValue);
         this->refreshBoundText();
         label->setText(labelText);
+
+		QObject::connect(input, SIGNAL(valueChanged(int)), this, SLOT(valueChangedSLOT(int)));
 
 }
 

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "CustomDial.h"
+#include "CondensationParameters.h"
 
 class SegmentationTab : public QWidget
 {
@@ -15,6 +16,7 @@ private:
 	CustomDial* _min_acc_iterations = new CustomDial("Min accumulator iterations", 0, 1000);
 public:
 	explicit SegmentationTab(QWidget *parent = 0);
+	void loadParameters(const CondensationParameters& parameters);
 	
 signals:
 	

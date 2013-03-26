@@ -33,7 +33,8 @@ SOURCES += \
     DensityTab.cpp \
     SegmentationTab.cpp \
     MatcherTab.cpp \
-    FeatureGeneratorTab.cpp
+    FeatureGeneratorTab.cpp \
+    CustomToggle.cpp
 
 
 HEADERS += \
@@ -44,7 +45,9 @@ HEADERS += \
     DensityTab.h \
     SegmentationTab.h \
     MatcherTab.h \
-    FeatureGeneratorTab.h
+    FeatureGeneratorTab.h \
+    CustomToggle.h \
+    Algorithm_SynchronizedCondensation.h
 
 RESOURCES += img.qrc
 

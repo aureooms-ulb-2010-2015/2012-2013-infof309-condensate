@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "CustomDial.h"
+#include "CondensationParameters.h"
 
 class DensityTab : public QWidget
 {
@@ -11,6 +12,7 @@ private:
 	CustomDial* _spreadRange = new CustomDial("Spread range", 0, 100);
 public:
 	explicit DensityTab(QWidget *parent = 0);
+	void loadParameters(const CondensationParameters& parameters);
 	
 signals:
 	

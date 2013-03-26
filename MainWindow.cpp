@@ -1,21 +1,13 @@
 #include "MainWindow.h"
 
 #include <QApplication>
-#include "Algorithm_NoProcessing.h"
-#include "Algorithm_Tagging.h"
-#include "Algorithm_FeaturesTracker.h"
-#include "Algorithm_TagAnTrack.h"
-#include "Algorithm_BinaryMaskWithOriginalFrame.h"
-#include "Algorithm_Watershed.h"
-#include "Algorithm_OomsChallenge.h"
-#include "Algorithm_CustomCondensationV1.h"
-#include "Algorithm_CustomCondensationTemplateV3.h"
-#include "Matcher_GreyLevelDistanceMatcher.h"
 
 //===================================================
 
 FrameProcessor* MainWindow::generateProcessor(){
-    return new CustomCondensationTemplateV3();
+	this->_frameProcessor = new SynchronizedCondensation<CustomCondensationTemplateV3>();
+	this->_parameterControlWidget->loadParameters(this->getSynchronizedAlgorithm()->getActualParameters());
+	return this->_frameProcessor;
 }
 
 MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
@@ -32,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 }
 
 MainWindow::~MainWindow(){}
+
+SynchronizedCondensation<CustomCondensationTemplateV3> *MainWindow::getSynchronizedAlgorithm(){
+	return (SynchronizedCondensation<CustomCondensationTemplateV3>*) this->_frameProcessor;
+}
 
 void MainWindow::toggleParameterControlWidget(){
         if(this->_parameterControlWidget->isVisible()){

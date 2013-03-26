@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "CustomDial.h"
+#include "CustomToggle.h"
+#include "CondensationParameters.h"
 
 class FeatureGeneratorTab : public QWidget
 {
@@ -12,10 +14,11 @@ private:
 	CustomDial* _qualityLevel = new CustomDial("Quality level", 0, 1000);
 	CustomDial* _minDistance = new CustomDial("Min distance", 0, 1000);
 	CustomDial* _blockSize = new CustomDial("Block size", 0, 1000);
-	CustomDial* _useHarrisDetector = new CustomDial("Use harris detector", 0, 1);
+	CustomToggle* _useHarrisDetector = new CustomToggle("Use harris detector");
 	CustomDial* _k = new CustomDial("K", 0, 100);
 public:
 	explicit FeatureGeneratorTab(QWidget *parent = 0);
+	void loadParameters(const CondensationParameters& parameters);
 	
 signals:
 	

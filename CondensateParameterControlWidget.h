@@ -8,6 +8,7 @@
 #include "MatcherTab.h"
 #include "PrecisionTab.h"
 #include "SegmentationTab.h"
+#include "CondensationParameters.h"
 
 class CondensateParameterControlDialog : public QDialog{
 private:
@@ -19,6 +20,7 @@ private:
     SegmentationTab* _segmentationTab = new SegmentationTab();
 public:
 	CondensateParameterControlDialog(QWidget* parent = 0);
+	void loadParameters(const CondensationParameters& parameters);
 };
 
 #endif // CONDENSATEPARAMETERCONTROLWIDGET_H
