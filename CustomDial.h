@@ -11,9 +11,11 @@ class CustomDial : public QWidget{
 
 private:
     QLabel* label = new QLabel();
+    QLabel* bounds = new QLabel();
     QDial* input = new QDial();
     QLabel* value = new QLabel();
     QGridLayout* layout = new QGridLayout(this);
+    void refreshBoundText();
 public:
     explicit CustomDial(const QString &labelText, int minValue, int maxValue, QWidget *parent = 0);
     void setValue(int);
