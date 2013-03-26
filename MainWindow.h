@@ -2,14 +2,15 @@
 #define MAINWINDOW_H
 
 #include "BasicWindow.h"
-#include "ProcessingChoiceWidget.h"
+#include "CustomButton.h"
+#include "CondensateParameterControlWidget.h"
 
 class MainWindow : public BasicWindow{
     Q_OBJECT
 
 private:
-	ProcessingChoiceWidget* _processingChoice = new ProcessingChoiceWidget();
-	int _frameProcessorId = 0;
+	CustomButton* _parameterToggle = new CustomButton();
+	CondensateParameterControlDialog* _parameterControlWidget = new CondensateParameterControlDialog(this);
 
 	void initProcessingChoices();
 	virtual FrameProcessor* generateProcessor();
@@ -17,11 +18,9 @@ private:
 public:
     explicit MainWindow(QWidget *parent = 0);
 	virtual ~MainWindow();
-	virtual void keyPressEvent(QKeyEvent *);
 
 public slots:
-	void changeFrameProcessorSLOT(int);
-
+	virtual void toggleParameterControlWidget();
 };
 
 #endif // MAINWINDOW_H
