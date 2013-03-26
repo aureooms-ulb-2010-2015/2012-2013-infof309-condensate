@@ -23,6 +23,10 @@ private:
 public:
 	CondensateParameterControlDialog(QWidget* parent = 0);
 	void loadParameters(const CondensationParameters& parameters);
+
+public slots:
+	void save();
+	void load();
 };
 
 #endif // CONDENSATEPARAMETERCONTROLWIDGET_H

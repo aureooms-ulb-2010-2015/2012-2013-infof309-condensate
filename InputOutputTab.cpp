@@ -2,11 +2,14 @@
 
 InputOutputTab::InputOutputTab(QWidget *parent) :
 	QWidget(parent){
-	layout->addWidget(save,0, 1, 1, 1);
-	layout->addWidget(load,1, 1, 1, 1);
+	_layout->addWidget(this->_save,0, 1, 1, 1);
+	_layout->addWidget(this->_load,1, 1, 1, 1);
 
-	save->setFixedSize(150, 100);
-	save->setFont(QFont(save->font().family(), 12, QFont::Bold));
-	load->setFixedSize(150, 100);
-	load->setFont(QFont(load->font().family(), 12, QFont::Bold));
+	this->_save->setFixedSize(150, 100);
+	this->_save->setFont(QFont(this->_save->font().family(), 12, QFont::Bold));
+	this->_load->setFixedSize(150, 100);
+	this->_load->setFont(QFont(this->_load->font().family(), 12, QFont::Bold));
+
+	QObject::connect(this->_save, SIGNAL(clicked()), this, SIGNAL(save()));
+	QObject::connect(this->_load, SIGNAL(clicked()), this, SIGNAL(load()));
 }

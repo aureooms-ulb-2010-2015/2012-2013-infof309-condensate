@@ -10,14 +10,15 @@ class InputOutputTab : public QWidget
 {
 	Q_OBJECT
 private:
-	QPushButton* save = new QPushButton("Save");
-	QPushButton* load = new QPushButton("Load");
-	QGridLayout* layout = new QGridLayout(this);
+	QPushButton* _save = new QPushButton("Save");
+	QPushButton* _load = new QPushButton("Load");
+	QGridLayout* _layout = new QGridLayout(this);
 public:
 	explicit InputOutputTab(QWidget *parent = 0);
 	
 signals:
-	
+	void save();
+	void load();
 public slots:
 	
 };

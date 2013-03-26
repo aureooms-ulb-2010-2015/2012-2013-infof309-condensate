@@ -8,6 +8,9 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
 	this->_tabs->addTab(this->_inputOutputTab, "XML");
 	this->_tabs->setFixedSize(560,480);
 	this->setWindowTitle("Parameters Controls");
+
+	QObject::connect(this->_inputOutputTab, SIGNAL(save()), this, SLOT(save()));
+	QObject::connect(this->_inputOutputTab, SIGNAL(load()), this, SLOT(load()));
 }
 
 void CondensateParameterControlDialog::loadParameters(const CondensationParameters &parameters){
@@ -16,4 +19,12 @@ void CondensateParameterControlDialog::loadParameters(const CondensationParamete
 	this->_matcherTab->loadParameters(parameters);
 	this->_precisionTab->loadParameters(parameters);
 	this->_segmentationTab->loadParameters(parameters);
+}
+
+void CondensateParameterControlDialog::save(){
+	//TODO
+}
+
+void CondensateParameterControlDialog::load(){
+	//TODO
 }
