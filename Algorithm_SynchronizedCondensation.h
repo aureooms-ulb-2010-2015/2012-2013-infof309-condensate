@@ -81,6 +81,13 @@ public:
 		changed = true;
 		lock.unlock();
 	}
+	void radiusChanged(int value){
+		lock.lock();
+		temp.R = value;
+		temp.matcher->setRadius(value);
+		changed = true;
+		lock.unlock();
+	}
 	void pollingRangeChanged(int value){
 		lock.lock();
 		temp.pollingRange = value;

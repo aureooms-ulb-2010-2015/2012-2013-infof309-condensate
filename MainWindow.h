@@ -35,6 +35,7 @@ public slots:
 	void kChangedSLOT(float);
 	void useHarrisDetectorChangedSLOT(bool);
 	void maxDistChangedSLOT(int);
+	void radiusChangedSLOT(int);
 	void pollingRangeChangedSLOT(int);
 	void generatingRangeChangedSLOT(int);
 	void minWidthChangedSLOT(int);

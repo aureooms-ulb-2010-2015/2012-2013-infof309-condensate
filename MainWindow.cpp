@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 		QObject::connect(this->_parameterControlWidget, SIGNAL(kChanged(float)), this, SLOT(kChangedSLOT(float)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(useHarrisDetectorChanged(bool)), this, SLOT(useHarrisDetectorChangedSLOT(bool)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(maxDistChanged(int)), this, SLOT(maxDistChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(radiusChanged(int)), this, SLOT(radiusChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(pollingRangeChanged(int)), this, SLOT(pollingRangeChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(generatingRangeChanged(int)), this, SLOT(generatingRangeChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(minWidthChanged(int)), this, SLOT(minWidthChangedSLOT(int)));
@@ -111,6 +112,10 @@ void MainWindow::useHarrisDetectorChangedSLOT(bool value){
 
 void MainWindow::maxDistChangedSLOT(int value){
 	this->getSynchronizedAlgorithm()->maxDistChanged(value);
+}
+
+void MainWindow::radiusChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->radiusChanged(value);
 }
 
 void MainWindow::pollingRangeChangedSLOT(int value){
