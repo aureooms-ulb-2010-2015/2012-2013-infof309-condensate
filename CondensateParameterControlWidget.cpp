@@ -6,8 +6,9 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
     this->_tabs->addTab(this->_matcherTab, "Matcher");
 	this->_tabs->addTab(this->_precisionTab, "Precision");
 	this->_tabs->addTab(this->_segmentationTab, "Segmentation");
+	this->_tabs->addTab(this->_trustTab, "Trust");
 	this->_tabs->addTab(this->_inputOutputTab, "XML");
-	this->_tabs->setFixedSize(560,480);
+	this->_tabs->setFixedSize(600,480);
 	this->setWindowTitle("Parameters Controls");
 
 	QObject::connect(this->_inputOutputTab, SIGNAL(save()), this, SLOT(save()));
@@ -30,6 +31,11 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
 	QObject::connect(this->_segmentationTab, SIGNAL(minHeightChanged(int)), this, SIGNAL(minHeightChanged(int)));
 	QObject::connect(this->_segmentationTab, SIGNAL(maxHeightChanged(int)), this, SIGNAL(maxHeightChanged(int)));
 	QObject::connect(this->_segmentationTab, SIGNAL(minAccumulatorIterationsChanged(int)), this, SIGNAL(minAccumulatorIterationsChanged(int)));
+	QObject::connect(this->_trustTab, SIGNAL(startChanged(int)), this, SIGNAL(startChanged(int)));
+	QObject::connect(this->_trustTab, SIGNAL(dieChanged(int)), this, SIGNAL(dieChanged(int)));
+	QObject::connect(this->_trustTab, SIGNAL(bonusFactorChanged(int)), this, SIGNAL(bonusFactorChanged(int)));
+	QObject::connect(this->_trustTab, SIGNAL(malusChanged(int)), this, SIGNAL(malusChanged(int)));
+	QObject::connect(this->_trustTab, SIGNAL(minFeaturesChanged(int)), this, SIGNAL(minFeaturesChanged(int)));
 }
 
 void CondensateParameterControlDialog::loadParameters(const CondensationParameters &parameters){
@@ -38,6 +44,7 @@ void CondensateParameterControlDialog::loadParameters(const CondensationParamete
 	this->_matcherTab->loadParameters(parameters);
 	this->_precisionTab->loadParameters(parameters);
 	this->_segmentationTab->loadParameters(parameters);
+	this->_trustTab->loadParameters(parameters);
 }
 
 void CondensateParameterControlDialog::save(){

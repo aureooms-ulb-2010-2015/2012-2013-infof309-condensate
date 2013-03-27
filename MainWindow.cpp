@@ -42,6 +42,11 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 		QObject::connect(this->_parameterControlWidget, SIGNAL(minHeightChanged(int)), this, SLOT(minHeightChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(maxHeightChanged(int)), this, SLOT(maxHeightChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(minAccumulatorIterationsChanged(int)), this, SLOT(minAccumulatorIterationsChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(startChanged(int)), this, SLOT(startChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(dieChanged(int)), this, SLOT(dieChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(bonusFactorChanged(int)), this, SLOT(bonusFactorChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(malusChanged(int)), this, SLOT(malusChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(minFeaturesChanged(int)), this, SLOT(minFeaturesChangedSLOT(int)));
 }
 
 MainWindow::~MainWindow(){}
@@ -154,4 +159,24 @@ void MainWindow::matcherTypeChangedSLOT(int index){
 	else if(index == 1){
 		this->getSynchronizedAlgorithm()->matcherTypeChanged(std::shared_ptr<DistanceMatcher>(new GradientDistanceMatcher(1)));
 	}
+}
+
+void MainWindow::startChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->startChanged(value);
+}
+
+void MainWindow::dieChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->dieChanged(value);
+}
+
+void MainWindow::bonusFactorChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->bonusFactorChanged(value);
+}
+
+void MainWindow::malusChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->malusChanged(value);
+}
+
+void MainWindow::minFeaturesChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->minFeaturesChanged(value);
 }

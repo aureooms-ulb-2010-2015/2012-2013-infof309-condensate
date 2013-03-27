@@ -10,6 +10,7 @@
 #include "SegmentationTab.h"
 #include "CondensationParameters.h"
 #include "InputOutputTab.h"
+#include "TrustTab.h"
 
 class CondensateParameterControlDialog : public QDialog{
 	Q_OBJECT
@@ -21,6 +22,7 @@ private:
 	PrecisionTab* _precisionTab = new PrecisionTab();
 	SegmentationTab* _segmentationTab = new SegmentationTab();
 	InputOutputTab* _inputOutputTab = new InputOutputTab();
+	TrustTab* _trustTab = new TrustTab();
 public:
 	CondensateParameterControlDialog(QWidget* parent = 0);
 	void loadParameters(const CondensationParameters& parameters);
@@ -48,6 +50,11 @@ signals:
 	void minAccumulatorIterationsChanged(int);
 	void radiusChanged(int);
 	void matcherTypeChanged(int);
+	void startChanged(int);
+	void dieChanged(int);
+	void bonusFactorChanged(int);
+	void malusChanged(int);
+	void minFeaturesChanged(int);
 };
 
 #endif // CONDENSATEPARAMETERCONTROLWIDGET_H

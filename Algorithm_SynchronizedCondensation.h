@@ -138,6 +138,39 @@ public:
 		lock.unlock();
 	}
 
+	void startChanged(int value){
+		lock.lock();
+		temp.TRUST_START = value;
+		changed = true;
+		lock.unlock();
+	}
+
+	void dieChanged(int value){
+		lock.lock();
+		temp.TRUST_DIE = value;
+		changed = true;
+		lock.unlock();
+	}
+	void bonusFactorChanged(int value){
+		lock.lock();
+		temp.TRUST_BONUS_FACTOR = value;
+		changed = true;
+		lock.unlock();
+	}
+	void malusChanged(int value){
+		lock.lock();
+		temp.TRUST_MALUS = value;
+		changed = true;
+		lock.unlock();
+	}
+	void minFeaturesChanged(int value){
+		lock.lock();
+		temp.MIN_FEATURES = value;
+		changed = true;
+		lock.unlock();
+	}
+
+
 
 };
 

@@ -36,7 +36,8 @@ SOURCES += \
     FeatureGeneratorTab.cpp \
     CustomToggle.cpp \
     InputOutputTab.cpp \
-    CustomSelect.cpp
+    CustomSelect.cpp \
+    TrustTab.cpp
 
 
 HEADERS += \
@@ -51,7 +52,8 @@ HEADERS += \
     CustomToggle.h \
     Algorithm_SynchronizedCondensation.h \
     InputOutputTab.h \
-    CustomSelect.h
+    CustomSelect.h \
+    TrustTab.h
 
 RESOURCES += img.qrc
 
