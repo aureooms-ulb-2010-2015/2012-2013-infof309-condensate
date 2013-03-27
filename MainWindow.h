@@ -43,6 +43,7 @@ public slots:
 	void minHeightChangedSLOT(int);
 	void maxHeightChangedSLOT(int);
 	void minAccumulatorIterationsChangedSLOT(int);
+	void matcherTypeChangedSLOT(int);
 };
 
 #endif // MAINWINDOW_H

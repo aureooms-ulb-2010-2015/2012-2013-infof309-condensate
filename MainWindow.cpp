@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 		QObject::connect(this->_parameterControlWidget, SIGNAL(blockSizeChanged(int)), this, SLOT(blockSizeChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(kChanged(float)), this, SLOT(kChangedSLOT(float)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(useHarrisDetectorChanged(bool)), this, SLOT(useHarrisDetectorChangedSLOT(bool)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(matcherTypeChanged(int)), this, SLOT(matcherTypeChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(maxDistChanged(int)), this, SLOT(maxDistChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(radiusChanged(int)), this, SLOT(radiusChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(pollingRangeChanged(int)), this, SLOT(pollingRangeChangedSLOT(int)));
@@ -144,4 +145,13 @@ void MainWindow::maxHeightChangedSLOT(int value){
 
 void MainWindow::minAccumulatorIterationsChangedSLOT(int value){
 	this->getSynchronizedAlgorithm()->minAccumulatorIterationsChanged(value);
+}
+
+void MainWindow::matcherTypeChangedSLOT(int index){
+	if(index == 0){
+		this->getSynchronizedAlgorithm()->matcherTypeChanged(std::shared_ptr<DistanceMatcher>(new GreyLevelDistanceMatcher(1)));
+	}
+	else if(index == 1){
+		this->getSynchronizedAlgorithm()->matcherTypeChanged(std::shared_ptr<DistanceMatcher>(new GradientDistanceMatcher(1)));
+	}
 }

@@ -35,7 +35,8 @@ SOURCES += \
     MatcherTab.cpp \
     FeatureGeneratorTab.cpp \
     CustomToggle.cpp \
-    InputOutputTab.cpp
+    InputOutputTab.cpp \
+    CustomSelect.cpp
 
 
 HEADERS += \
@@ -49,7 +50,8 @@ HEADERS += \
     FeatureGeneratorTab.h \
     CustomToggle.h \
     Algorithm_SynchronizedCondensation.h \
-    InputOutputTab.h
+    InputOutputTab.h \
+    CustomSelect.h
 
 RESOURCES += img.qrc
 

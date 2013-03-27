@@ -20,6 +20,7 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
 	QObject::connect(this->_featureGeneratorTab, SIGNAL(blockSizeChanged(int)), this, SIGNAL(blockSizeChanged(int)));
 	QObject::connect(this->_featureGeneratorTab, SIGNAL(kChanged(float)), this, SIGNAL(kChanged(float)));
 	QObject::connect(this->_featureGeneratorTab, SIGNAL(useHarrisDetectorChanged(bool)), this, SIGNAL(useHarrisDetectorChanged(bool)));
+	QObject::connect(this->_matcherTab, SIGNAL(matcherTypeChanged(int)), this, SIGNAL(matcherTypeChanged(int)));
 	QObject::connect(this->_matcherTab, SIGNAL(maxDistChanged(int)), this, SIGNAL(maxDistChanged(int)));
 	QObject::connect(this->_matcherTab, SIGNAL(radiusChanged(int)), this, SIGNAL(radiusChanged(int)));
 	QObject::connect(this->_precisionTab, SIGNAL(pollingRangeChanged(int)), this, SIGNAL(pollingRangeChanged(int)));

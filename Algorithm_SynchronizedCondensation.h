@@ -75,6 +75,13 @@ public:
 		changed = true;
 		lock.unlock();
 	}
+	void matcherTypeChanged(const std::shared_ptr<DistanceMatcher>& matcher){
+		lock.lock();
+		temp.matcher = matcher;
+		temp.matcher->setRadius(temp.R);
+		changed = true;
+		lock.unlock();
+	}
 	void maxDistChanged(int value){
 		lock.lock();
 		temp.MAX_DIST = value;

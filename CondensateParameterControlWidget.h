@@ -47,6 +47,7 @@ signals:
 	void maxHeightChanged(int);
 	void minAccumulatorIterationsChanged(int);
 	void radiusChanged(int);
+	void matcherTypeChanged(int);
 };
 
 #endif // CONDENSATEPARAMETERCONTROLWIDGET_H

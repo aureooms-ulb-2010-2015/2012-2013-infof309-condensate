@@ -3,10 +3,13 @@
 #include <QWidget>
 #include "CustomDial.h"
 #include "CondensationParameters.h"
+#include "CustomSelect.h"
 
 class MatcherTab : public QWidget{
 	Q_OBJECT
 private:
+	std::vector<QString> types = {"Color", "Gradient"};
+	CustomSelect* _matcherType = new CustomSelect("Matcher type", types);
 	CustomDial* _maxDist = new CustomDial("Max distance", 0, 1000);
 	CustomDial* _radius = new CustomDial("Radius", 0, 239);
 public:
@@ -16,6 +19,7 @@ public:
 signals:
 	void maxDistChanged(int);
 	void radiusChanged(int);
+	void matcherTypeChanged(int);
 
 public slots:
 
