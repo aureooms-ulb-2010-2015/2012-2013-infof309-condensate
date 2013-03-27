@@ -49,6 +49,8 @@ public slots:
 	void bonusFactorChangedSLOT(int);
 	void malusChangedSLOT(int);
 	void minFeaturesChangedSLOT(int);
+	void resamplingPassesChangedSLOT(int);
+	void resamplingRangeChangedSLOT(int);
 };
 
 #endif // MAINWINDOW_H

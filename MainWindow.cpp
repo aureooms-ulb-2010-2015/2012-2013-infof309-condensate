@@ -26,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 		this->generateProcessor();
 
 		QObject::connect(this->_parameterControlWidget, SIGNAL(spreadRangeChanged(int)), this, SLOT(spreadRangeChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(resamplingPassesChanged(int)), this, SLOT(resamplingPassesChangedSLOT(int)));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(resamplingRangeChanged(int)), this, SLOT(resamplingRangeChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(maxCornersChanged(int)), this, SLOT(maxCornersChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(qualityLevelChanged(float)), this, SLOT(qualityLevelChangedSLOT(float)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(minDistanceChanged(int)), this, SLOT(minDistanceChangedSLOT(int)));
@@ -179,4 +181,12 @@ void MainWindow::malusChangedSLOT(int value){
 
 void MainWindow::minFeaturesChangedSLOT(int value){
 	this->getSynchronizedAlgorithm()->minFeaturesChanged(value);
+}
+
+void MainWindow::resamplingPassesChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->resamplingPassesChanged(value);
+}
+
+void MainWindow::resamplingRangeChangedSLOT(int value){
+	this->getSynchronizedAlgorithm()->resamplingRangeChanged(value);
 }

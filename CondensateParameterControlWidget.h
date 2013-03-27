@@ -55,6 +55,8 @@ signals:
 	void bonusFactorChanged(int);
 	void malusChanged(int);
 	void minFeaturesChanged(int);
+	void resamplingPassesChanged(int);
+	void resamplingRangeChanged(int);
 };
 
 #endif // CONDENSATEPARAMETERCONTROLWIDGET_H

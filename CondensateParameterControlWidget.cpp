@@ -15,6 +15,8 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
 	QObject::connect(this->_inputOutputTab, SIGNAL(load()), this, SLOT(load()));
 
 	QObject::connect(this->_densityTab, SIGNAL(spreadRangeChanged(int)), this, SIGNAL(spreadRangeChanged(int)));
+	QObject::connect(this->_densityTab, SIGNAL(resamplingPassesChanged(int)), this, SIGNAL(resamplingPassesChanged(int)));
+	QObject::connect(this->_densityTab, SIGNAL(resamplingRangeChanged(int)), this, SIGNAL(resamplingRangeChanged(int)));
 	QObject::connect(this->_featureGeneratorTab, SIGNAL(maxCornersChanged(int)), this, SIGNAL(maxCornersChanged(int)));
 	QObject::connect(this->_featureGeneratorTab, SIGNAL(qualityLevelChanged(float)), this, SIGNAL(qualityLevelChanged(float)));
 	QObject::connect(this->_featureGeneratorTab, SIGNAL(minDistanceChanged(int)), this, SIGNAL(minDistanceChanged(int)));

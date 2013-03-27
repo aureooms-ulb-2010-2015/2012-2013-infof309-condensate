@@ -169,6 +169,18 @@ public:
 		changed = true;
 		lock.unlock();
 	}
+	void resamplingPassesChanged(int value){
+		lock.lock();
+		temp.resamplingPasses = value;
+		changed = true;
+		lock.unlock();
+	}
+	void resamplingRangeChanged(int value){
+		lock.lock();
+		temp.resamplingRange = value;
+		changed = true;
+		lock.unlock();
+	}
 
 
 
