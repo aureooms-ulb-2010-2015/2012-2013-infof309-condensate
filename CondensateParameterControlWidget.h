@@ -12,6 +12,7 @@
 #include "InputOutputTab.h"
 
 class CondensateParameterControlDialog : public QDialog{
+	Q_OBJECT
 private:
     QTabWidget* _tabs = new QTabWidget(this);
     DensityTab* _densityTab = new DensityTab();
@@ -27,6 +28,24 @@ public:
 public slots:
 	void save();
 	void load();
+
+signals:
+
+	void spreadRangeChanged(int);
+	void maxCornersChanged(int);
+	void qualityLevelChanged(float);
+	void minDistanceChanged(int);
+	void blockSizeChanged(int);
+	void kChanged(float);
+	void useHarrisDetectorChanged(bool);
+	void maxDistChanged(int);
+	void pollingRangeChanged(int);
+	void generatingRangeChanged(int);
+	void minWidthChanged(int);
+	void maxWidthChanged(int);
+	void minHeightChanged(int);
+	void maxHeightChanged(int);
+	void minAccumulatorIterationsChanged(int);
 };
 
 #endif // CONDENSATEPARAMETERCONTROLWIDGET_H

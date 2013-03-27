@@ -5,8 +5,7 @@
 #include "CustomDial.h"
 #include "CondensationParameters.h"
 
-class PrecisionTab : public QWidget
-{
+class PrecisionTab : public QWidget{
 	Q_OBJECT
 private:
 	CustomDial* _pollingRange = new CustomDial("Polling range", 1, 100);
@@ -16,6 +15,8 @@ public:
 	void loadParameters(const CondensationParameters& parameters);
 	
 signals:
+	void pollingRangeChanged(int);
+	void generatingRangeChanged(int);
 	
 public slots:
 	

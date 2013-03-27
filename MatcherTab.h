@@ -4,8 +4,7 @@
 #include "CustomDial.h"
 #include "CondensationParameters.h"
 
-class MatcherTab : public QWidget
-{
+class MatcherTab : public QWidget{
 	Q_OBJECT
 private:
 	CustomDial* _maxDist = new CustomDial("Max distance", 0, 1000);
@@ -14,6 +13,7 @@ public:
 	void loadParameters(const CondensationParameters& parameters);
 
 signals:
+	void maxDistChanged(int);
 
 public slots:
 

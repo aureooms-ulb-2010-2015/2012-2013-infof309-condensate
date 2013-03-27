@@ -14,6 +14,12 @@ SegmentationTab::SegmentationTab(QWidget *parent) :
     QObject::connect(this->_maxWidth, SIGNAL(valueChanged(int)), this->_minWidth, SLOT(changeUpperBoundSLOT(int)));
     QObject::connect(this->_minHeight, SIGNAL(valueChanged(int)), this->_maxHeight, SLOT(changeLowerBoundSLOT(int)));
 	QObject::connect(this->_maxHeight, SIGNAL(valueChanged(int)), this->_minHeight, SLOT(changeUpperBoundSLOT(int)));
+
+	QObject::connect(this->_minWidth, SIGNAL(valueChanged(int)), this, SIGNAL(minWidthChanged(int)));
+	QObject::connect(this->_maxWidth, SIGNAL(valueChanged(int)), this, SIGNAL(maxWidthChanged(int)));
+	QObject::connect(this->_minHeight, SIGNAL(valueChanged(int)), this, SIGNAL(minHeightChanged(int)));
+	QObject::connect(this->_maxHeight, SIGNAL(valueChanged(int)), this, SIGNAL(maxHeightChanged(int)));
+	QObject::connect(this->_min_acc_iterations, SIGNAL(valueChanged(int)), this, SIGNAL(minAccumulatorIterationsChanged(int)));
 }
 
 void SegmentationTab::loadParameters(const CondensationParameters &parameters){

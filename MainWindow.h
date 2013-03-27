@@ -25,6 +25,23 @@ public:
 	void splitScreen();
 public slots:
 	virtual void toggleParameterControlWidget();
+
+
+	void spreadRangeChangedSLOT(int);
+	void maxCornersChangedSLOT(int);
+	void qualityLevelChangedSLOT(float);
+	void minDistanceChangedSLOT(int);
+	void blockSizeChangedSLOT(int);
+	void kChangedSLOT(float);
+	void useHarrisDetectorChangedSLOT(bool);
+	void maxDistChangedSLOT(int);
+	void pollingRangeChangedSLOT(int);
+	void generatingRangeChangedSLOT(int);
+	void minWidthChangedSLOT(int);
+	void maxWidthChangedSLOT(int);
+	void minHeightChangedSLOT(int);
+	void maxHeightChangedSLOT(int);
+	void minAccumulatorIterationsChangedSLOT(int);
 };
 
 #endif // MAINWINDOW_H

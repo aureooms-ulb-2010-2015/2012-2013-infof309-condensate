@@ -6,8 +6,7 @@
 #include <QPushButton>
 #include <QGridLayout>
 
-class InputOutputTab : public QWidget
-{
+class InputOutputTab : public QWidget{
 	Q_OBJECT
 private:
 	QPushButton* _save = new QPushButton("Save");

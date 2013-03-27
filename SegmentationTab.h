@@ -5,8 +5,7 @@
 #include "CustomDial.h"
 #include "CondensationParameters.h"
 
-class SegmentationTab : public QWidget
-{
+class SegmentationTab : public QWidget{
 	Q_OBJECT
 private:
     CustomDial* _minWidth = new CustomDial("Min width", 1, 640);
@@ -19,6 +18,11 @@ public:
 	void loadParameters(const CondensationParameters& parameters);
 	
 signals:
+	void minWidthChanged(int);
+	void maxWidthChanged(int);
+	void minHeightChanged(int);
+	void maxHeightChanged(int);
+	void minAccumulatorIterationsChanged(int);
 	
 public slots:
 	
