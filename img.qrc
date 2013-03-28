@@ -6,5 +6,6 @@
         <file>qss/QComboBoxDropDown.qss</file>
         <file>qss/timeControlSlider.qss</file>
         <file>qss/CustomButton.qss</file>
+        <file alias="parameter_icon">img/parameter.png</file>
     </qresource>
 </RCC>

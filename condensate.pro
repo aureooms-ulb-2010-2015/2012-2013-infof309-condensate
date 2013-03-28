@@ -71,4 +71,5 @@ OTHER_FILES += \
     data/greyfish.png \
     data/bigfish.png \
     data/yellowfish.png \
-    qss/CustomButton.qss
+    qss/CustomButton.qss \
+    img/parameter.png
