@@ -51,6 +51,15 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 		QObject::connect(this->_parameterControlWidget, SIGNAL(minFeaturesChanged(int)), this, SLOT(minFeaturesChangedSLOT(int)));
 }
 
+void MainWindow::keyPressEvent(QKeyEvent* event){
+
+	if(event->key() == Qt::Key_F7){
+		return this->toggleParameterControlWidget();
+	}
+
+	return BasicWindow::keyPressEvent(event);
+}
+
 MainWindow::~MainWindow(){}
 
 SynchronizedCondensation<CustomCondensationTemplateV3> *MainWindow::getSynchronizedAlgorithm(){

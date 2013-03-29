@@ -23,6 +23,7 @@ public:
 	SynchronizedCondensation<CustomCondensationTemplateV3>* getSynchronizedAlgorithm();
 
 	void splitScreen();
+	void keyPressEvent(QKeyEvent *event);
 public slots:
 	virtual void toggleParameterControlWidget();
 
