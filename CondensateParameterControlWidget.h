@@ -11,10 +11,12 @@
 #include "CondensationParameters.h"
 #include "InputOutputTab.h"
 #include "TrustTab.h"
+#include "CondensateParameterLoader.h"
 
 class CondensateParameterControlDialog : public QDialog{
 	Q_OBJECT
 private:
+
     QTabWidget* _tabs = new QTabWidget(this);
     DensityTab* _densityTab = new DensityTab();
     FeatureGeneratorTab* _featureGeneratorTab = new FeatureGeneratorTab();
@@ -27,12 +29,11 @@ public:
 	CondensateParameterControlDialog(QWidget* parent = 0);
 	void loadParameters(const CondensationParameters& parameters);
 
-public slots:
-	void save();
-	void load();
 
 signals:
 
+	void save();
+	void load();
 	void spreadRangeChanged(int);
 	void maxCornersChanged(int);
 	void qualityLevelChanged(float);

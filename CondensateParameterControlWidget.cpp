@@ -11,8 +11,8 @@ CondensateParameterControlDialog::CondensateParameterControlDialog(QWidget *pare
 	this->_tabs->setFixedSize(600,480);
 	this->setWindowTitle("Parameters Controls");
 
-	QObject::connect(this->_inputOutputTab, SIGNAL(save()), this, SLOT(save()));
-	QObject::connect(this->_inputOutputTab, SIGNAL(load()), this, SLOT(load()));
+	QObject::connect(this->_inputOutputTab, SIGNAL(save()), this, SIGNAL(save()));
+	QObject::connect(this->_inputOutputTab, SIGNAL(load()), this, SIGNAL(load()));
 
 	QObject::connect(this->_densityTab, SIGNAL(spreadRangeChanged(int)), this, SIGNAL(spreadRangeChanged(int)));
 	QObject::connect(this->_densityTab, SIGNAL(resamplingPassesChanged(int)), this, SIGNAL(resamplingPassesChanged(int)));
@@ -49,10 +49,3 @@ void CondensateParameterControlDialog::loadParameters(const CondensationParamete
 	this->_trustTab->loadParameters(parameters);
 }
 
-void CondensateParameterControlDialog::save(){
-	//TODO
-}
-
-void CondensateParameterControlDialog::load(){
-	//TODO
-}

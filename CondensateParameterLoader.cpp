@@ -5,7 +5,7 @@ CondensateParameterLoader::CondensateParameterLoader(){
 }
 
 CondensationParameters CondensateParameterLoader::load(const QString &filename){
-	//TODO
+	return CondensationParameters();
 }
 
 void CondensateParameterLoader::save(const CondensationParameters &parameters, const QString &filename){

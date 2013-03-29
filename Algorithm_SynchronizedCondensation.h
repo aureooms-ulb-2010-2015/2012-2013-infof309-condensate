@@ -29,7 +29,17 @@ public:
 	}
 
 	CondensationParameters getActualParameters(){
-		return this->processor.parameters;
+		lock.lock();
+		CondensationParameters parameters(temp);
+		lock.unlock();
+		return parameters;
+	}
+
+	void changeParameters(const CondensationParameters& parameters){
+		lock.lock();
+		temp = parameters;
+		changed = true;
+		lock.unlock();
 	}
 
 	void spreadRangeChanged(int value){

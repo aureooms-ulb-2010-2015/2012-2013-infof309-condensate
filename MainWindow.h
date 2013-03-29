@@ -11,6 +11,10 @@ class MainWindow : public BasicWindow{
     Q_OBJECT
 
 private:
+	CondensateParameterLoader loader;
+	QString _lastVisitedFolderOpen;
+	QString _lastVisitedFolderSave;
+
 	CustomButton* _parameterToggle = new CustomButton();
 	CondensateParameterControlDialog* _parameterControlWidget = new CondensateParameterControlDialog(this);
 
@@ -24,9 +28,13 @@ public:
 
 	void splitScreen();
 	void keyPressEvent(QKeyEvent *event);
+	QString getXMLFilePathOpen();
+	QString getXMLFilePathSave();
 public slots:
-	virtual void toggleParameterControlWidget();
+	void save();
+	void load();
 
+	virtual void toggleParameterControlWidget();
 
 	void spreadRangeChangedSLOT(int);
 	void maxCornersChangedSLOT(int);

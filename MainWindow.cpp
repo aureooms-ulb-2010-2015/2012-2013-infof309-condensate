@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QFileDialog>
 
 //===================================================
 
@@ -24,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
 		QObject::connect(this->_parameterToggle, SIGNAL(clicked()), this, SLOT(toggleParameterControlWidget()));
 
 		this->generateProcessor();
+
+		QObject::connect(this->_parameterControlWidget, SIGNAL(save()), this, SLOT(save()));
+		QObject::connect(this->_parameterControlWidget, SIGNAL(load()), this, SLOT(load()));
 
 		QObject::connect(this->_parameterControlWidget, SIGNAL(spreadRangeChanged(int)), this, SLOT(spreadRangeChangedSLOT(int)));
 		QObject::connect(this->_parameterControlWidget, SIGNAL(resamplingPassesChanged(int)), this, SLOT(resamplingPassesChangedSLOT(int)));
@@ -95,6 +99,49 @@ void MainWindow::splitScreen(){
 	this->_parameterControlWidget->move(rightRect.topLeft());
 	this->move(leftRect.topLeft());
 }
+
+
+
+void MainWindow::save(){
+	QString fileName = this->getXMLFilePathSave();
+	if(!fileName.isEmpty()){
+		loader.save(this->getSynchronizedAlgorithm()->getActualParameters(), fileName);
+	}
+}
+
+void MainWindow::load(){
+	QString fileName = this->getXMLFilePathOpen();
+	if(!fileName.isEmpty()){
+		CondensationParameters parameters = loader.load(fileName);
+		this->getSynchronizedAlgorithm()->changeParameters(parameters);
+		this->_parameterControlWidget->loadParameters(parameters);
+	}
+}
+
+
+QString MainWindow::getXMLFilePathOpen(){
+	QString filePath = QFileDialog::getOpenFileName(this, tr("Open Parameter File"),this->_lastVisitedFolderOpen,tr("XML (*.xml);;Others (*.*)"));
+	for(int i = filePath.length(); i > 0; --i){
+		if(filePath.at(i-1) == QChar('/')){
+			this->_lastVisitedFolderOpen = filePath.left(i);
+			break;
+		}
+	}
+	return filePath;
+}
+
+
+QString MainWindow::getXMLFilePathSave(){
+	QString filePath = QFileDialog::getSaveFileName(this, tr("Open Parameter File"),this->_lastVisitedFolderSave,tr("XML (*.xml);;Others (*.*)"));
+	for(int i = filePath.length(); i > 0; --i){
+		if(filePath.at(i-1) == QChar('/')){
+			this->_lastVisitedFolderSave = filePath.left(i);
+			break;
+		}
+	}
+	return filePath;
+}
+
 
 
 
