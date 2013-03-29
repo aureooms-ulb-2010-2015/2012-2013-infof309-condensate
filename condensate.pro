@@ -37,7 +37,8 @@ SOURCES += \
     CustomToggle.cpp \
     InputOutputTab.cpp \
     CustomSelect.cpp \
-    TrustTab.cpp
+    TrustTab.cpp \
+    CondensateParameterLoader.cpp
 
 
 HEADERS += \
@@ -53,7 +54,8 @@ HEADERS += \
     Algorithm_SynchronizedCondensation.h \
     InputOutputTab.h \
     CustomSelect.h \
-    TrustTab.h
+    TrustTab.h \
+    CondensateParameterLoader.h
 
 RESOURCES += img.qrc
 
