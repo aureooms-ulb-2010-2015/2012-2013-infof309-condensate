@@ -4,7 +4,7 @@
 #include "BasicWindow.h"
 #include "CustomButton.h"
 #include "CondensateParameterControlWidget.h"
-#include "Algorithm_CustomCondensationTemplateV3.h"
+#include "Algorithm_CustomCondensationTemplateV4.h"
 #include "Algorithm_SynchronizedCondensation.h"
 
 class MainWindow : public BasicWindow{
@@ -24,7 +24,7 @@ private:
 public:
     explicit MainWindow(QWidget *parent = 0);
 	virtual ~MainWindow();
-	SynchronizedCondensation<CustomCondensationTemplateV3>* getSynchronizedAlgorithm();
+	SynchronizedCondensation<CustomCondensationTemplateV4>* getSynchronizedAlgorithm();
 
 	void splitScreen();
 	void keyPressEvent(QKeyEvent *event);

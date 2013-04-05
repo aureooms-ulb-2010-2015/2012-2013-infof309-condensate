@@ -7,7 +7,7 @@
 //===================================================
 
 FrameProcessor* MainWindow::generateProcessor(){
-	this->_frameProcessor = new SynchronizedCondensation<CustomCondensationTemplateV3>();
+	this->_frameProcessor = new SynchronizedCondensation<CustomCondensationTemplateV4>();
 	this->_parameterControlWidget->loadParameters(this->getSynchronizedAlgorithm()->getActualParameters());
 	return this->_frameProcessor;
 }
@@ -66,8 +66,8 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
 
 MainWindow::~MainWindow(){}
 
-SynchronizedCondensation<CustomCondensationTemplateV3> *MainWindow::getSynchronizedAlgorithm(){
-	return (SynchronizedCondensation<CustomCondensationTemplateV3>*) this->_frameProcessor;
+SynchronizedCondensation<CustomCondensationTemplateV4> *MainWindow::getSynchronizedAlgorithm(){
+	return (SynchronizedCondensation<CustomCondensationTemplateV4>*) this->_frameProcessor;
 }
 
 void MainWindow::toggleParameterControlWidget(){
