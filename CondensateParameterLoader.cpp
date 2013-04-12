@@ -9,7 +9,72 @@ CondensateParameterLoader::CondensateParameterLoader(){
 }
 
 CondensationParameters CondensateParameterLoader::load(const QString &filename){
-	return CondensationParameters();
+	QFile file(filename);
+
+	QDomDocument document;
+	if (!file.open(QIODevice::ReadOnly)){
+		return CondensationParameters();
+	}
+	if (!document.setContent(&file)){
+		file.close();
+		return CondensationParameters();
+	}
+	file.close();
+
+	QDomElement root = document.documentElement();
+	QDomNode node = root.firstChild();
+	CondensationParameters parameters;
+
+	parameters.pollingRange = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.generatingRange = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.spreadRange = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TARGET_MIN_WIDTH = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TARGET_MIN_HEIGHT = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TARGET_MAX_WIDTH = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TARGET_MAX_HEIGHT = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.MAX_DIST = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.maxCorners = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.qualityLevel = node.toElement().attribute("value").toDouble();
+	node = node.nextSibling();
+	parameters.minDistance = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.blockSize = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.useHarrisDetector = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.k = node.toElement().attribute("value").toDouble();
+	node = node.nextSibling();
+	parameters.MIN_ACCUMULATOR_ITERATIONS = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.R = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.matcherIndex = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TRUST_START = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TRUST_DIE = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TRUST_BONUS_FACTOR = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.TRUST_MALUS = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.MIN_FEATURES = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.resamplingPasses = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+	parameters.resamplingRange = node.toElement().attribute("value").toInt();
+	node = node.nextSibling();
+
+	return parameters;
 }
 
 void CondensateParameterLoader::save(const CondensationParameters &parameters, const QString &filename){
@@ -99,6 +164,6 @@ void CondensateParameterLoader::save(const CondensationParameters &parameters, c
 		return;
 	}
 	out.setDevice(&file);
-	document.save(out, 2);
+	document.save(out, 4);
 	file.close();
 }

@@ -38,6 +38,13 @@ public:
 	void changeParameters(const CondensationParameters& parameters){
 		lock.lock();
 		temp = parameters;
+		if(temp.matcherIndex == 0){
+			temp.matcher = std::shared_ptr<DistanceMatcher>(new GreyLevelDistanceMatcher(1));
+		}
+		else if(temp.matcherIndex == 1){
+			temp.matcher = std::shared_ptr<DistanceMatcher>(new GradientDistanceMatcher(1));
+		}
+		temp.matcher->setRadius(temp.R);
 		changed = true;
 		lock.unlock();
 	}
@@ -85,13 +92,21 @@ public:
 		changed = true;
 		lock.unlock();
 	}
-	void matcherTypeChanged(const std::shared_ptr<DistanceMatcher>& matcher){
+
+	void matcherTypeIndexChanged(int index){
 		lock.lock();
-		temp.matcher = matcher;
+		temp.matcherIndex = index;
+		if(index == 0){
+			temp.matcher = std::shared_ptr<DistanceMatcher>(new GreyLevelDistanceMatcher(1));
+		}
+		else if(index == 1){
+			temp.matcher = std::shared_ptr<DistanceMatcher>(new GradientDistanceMatcher(1));
+		}
 		temp.matcher->setRadius(temp.R);
 		changed = true;
 		lock.unlock();
 	}
+
 	void maxDistChanged(int value){
 		lock.lock();
 		temp.MAX_DIST = value;

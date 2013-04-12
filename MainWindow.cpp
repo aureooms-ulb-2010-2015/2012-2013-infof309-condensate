@@ -112,8 +112,8 @@ void MainWindow::load(){
 	QString fileName = this->getXMLFilePathOpen();
 	if(!fileName.isEmpty()){
 		CondensationParameters parameters = loader.load(fileName);
-		this->getSynchronizedAlgorithm()->changeParameters(parameters);
 		this->_parameterControlWidget->loadParameters(parameters);
+		this->getSynchronizedAlgorithm()->changeParameters(parameters);
 	}
 }
 
@@ -210,12 +210,7 @@ void MainWindow::minAccumulatorIterationsChangedSLOT(int value){
 }
 
 void MainWindow::matcherTypeChangedSLOT(int index){
-	if(index == 0){
-		this->getSynchronizedAlgorithm()->matcherTypeChanged(std::shared_ptr<DistanceMatcher>(new GreyLevelDistanceMatcher(1)));
-	}
-	else if(index == 1){
-		this->getSynchronizedAlgorithm()->matcherTypeChanged(std::shared_ptr<DistanceMatcher>(new GradientDistanceMatcher(1)));
-	}
+	this->getSynchronizedAlgorithm()->matcherTypeIndexChanged(index);
 }
 
 void MainWindow::startChangedSLOT(int value){
