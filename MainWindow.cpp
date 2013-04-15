@@ -7,7 +7,11 @@
 //===================================================
 
 FrameProcessor* MainWindow::generateProcessor(){
-	return new SynchronizedCondensation<CustomCondensationTemplateV4>();
+	SynchronizedCondensation<CustomCondensationTemplateV4>* processor = new SynchronizedCondensation<CustomCondensationTemplateV4>();
+	if(this->_frameProcessor != NULL){
+		processor->changeParameters(this->getSynchronizedAlgorithm()->getActualParameters());
+	}
+	return processor;
 }
 
 MainWindow::MainWindow(QWidget *parent) : BasicWindow(parent){
